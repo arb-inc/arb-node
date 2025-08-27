@@ -10,26 +10,26 @@ export class Documents extends APIResource {
    *
    * @example
    * ```ts
-   * const response = await client.filings.documents.file({
+   * const response = await client.filings.documents.upload({
    *   caseID: '2025-08-00125',
    *   documentID: 'statementOfClaim',
    *   userID: '9e1c7c02-4b65-43b0-9ad7-2a62b542e2f1',
    * });
    * ```
    */
-  file(body: DocumentFileParams, options?: RequestOptions): APIPromise<DocumentFileResponse> {
+  upload(body: DocumentUploadParams, options?: RequestOptions): APIPromise<DocumentUploadResponse> {
     return this._client.post('/filings/documents/create', { body, ...options });
   }
 }
 
-export interface DocumentFileResponse {
+export interface DocumentUploadResponse {
   /**
    * Identifier for the filed document.
    */
   filingID?: string;
 }
 
-export interface DocumentFileParams {
+export interface DocumentUploadParams {
   /**
    * Identifier of the case the filing is for.
    */
@@ -52,5 +52,8 @@ export interface DocumentFileParams {
 }
 
 export declare namespace Documents {
-  export { type DocumentFileResponse as DocumentFileResponse, type DocumentFileParams as DocumentFileParams };
+  export {
+    type DocumentUploadResponse as DocumentUploadResponse,
+    type DocumentUploadParams as DocumentUploadParams,
+  };
 }

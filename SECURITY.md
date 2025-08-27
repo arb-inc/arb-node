@@ -20,7 +20,7 @@ or products provided by Arb Inc, please follow the respective company's security
 
 ### Arb Inc Terms and Policies
 
-Please contact support@arb.inc'' for any questions or concerns regarding the security of our services.
+Please contact support@arb.inc for any questions or concerns regarding the security of our services.
 
 ---
 

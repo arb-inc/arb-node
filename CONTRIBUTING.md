@@ -55,12 +55,12 @@ $ cd arb-node
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link arb.inc
+$ yarn link @arb-inc/node
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global arb.inc
+$ pnpm link -—global @arb-inc/node
 ```
 
 ## Running tests

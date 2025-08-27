@@ -1,5 +1,5 @@
 import { inspect } from 'node:util';
-import { buildHeaders, type HeadersLike, type NullableHeaders } from 'arb.inc/internal/headers';
+import { buildHeaders, type HeadersLike, type NullableHeaders } from '@arb-inc/node/internal/headers';
 
 function inspectNullableHeaders(headers: NullableHeaders) {
   return `NullableHeaders {${[
