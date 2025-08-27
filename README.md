@@ -1,6 +1,6 @@
 # Arb Inc TypeScript API Library
 
-[![NPM version](<https://img.shields.io/npm/v/arb.inc.svg?label=npm%20(stable)>)](https://npmjs.org/package/arb.inc) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/arb.inc)
+[![NPM version](<https://img.shields.io/npm/v/@arb-inc/node.svg?label=npm%20(stable)>)](https://npmjs.org/package/@arb-inc/node) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@arb-inc/node)
 
 This library provides convenient access to the Arb Inc REST API from server-side TypeScript or JavaScript.
 
@@ -15,7 +15,7 @@ npm install git+ssh://git@github.com:arb-inc/arb-node.git
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install arb.inc`
+> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install @arb-inc/node`
 
 ## Usage
 
@@ -23,7 +23,7 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import ArbInc from 'arb.inc';
+import ArbInc from '@arb-inc/node';
 
 const client = new ArbInc({
   apiKey: process.env['ARB_INC_API_KEY'], // This is the default and can be omitted
@@ -40,7 +40,7 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import ArbInc from 'arb.inc';
+import ArbInc from '@arb-inc/node';
 
 const client = new ArbInc({
   apiKey: process.env['ARB_INC_API_KEY'], // This is the default and can be omitted
@@ -165,7 +165,7 @@ The log level can be configured in two ways:
 2. Using the `logLevel` client option (overrides the environment variable if set)
 
 ```ts
-import ArbInc from 'arb.inc';
+import ArbInc from '@arb-inc/node';
 
 const client = new ArbInc({
   logLevel: 'debug', // Show all log messages
@@ -193,7 +193,7 @@ When providing a custom logger, the `logLevel` option still controls which messa
 below the configured level will not be sent to your logger.
 
 ```ts
-import ArbInc from 'arb.inc';
+import ArbInc from '@arb-inc/node';
 import pino from 'pino';
 
 const logger = pino();
@@ -262,7 +262,7 @@ globalThis.fetch = fetch;
 Or pass it to the client:
 
 ```ts
-import ArbInc from 'arb.inc';
+import ArbInc from '@arb-inc/node';
 import fetch from 'my-fetch';
 
 const client = new ArbInc({ fetch });
@@ -273,7 +273,7 @@ const client = new ArbInc({ fetch });
 If you want to set custom `fetch` options without overriding the `fetch` function, you can provide a `fetchOptions` object when instantiating the client or making a request. (Request-specific options override client options.)
 
 ```ts
-import ArbInc from 'arb.inc';
+import ArbInc from '@arb-inc/node';
 
 const client = new ArbInc({
   fetchOptions: {
@@ -290,7 +290,7 @@ options to requests:
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/node.svg" align="top" width="18" height="21"> **Node** <sup>[[docs](https://github.com/nodejs/undici/blob/main/docs/docs/api/ProxyAgent.md#example---proxyagent-with-fetch)]</sup>
 
 ```ts
-import ArbInc from 'arb.inc';
+import ArbInc from '@arb-inc/node';
 import * as undici from 'undici';
 
 const proxyAgent = new undici.ProxyAgent('http://localhost:8888');
@@ -304,7 +304,7 @@ const client = new ArbInc({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/bun.svg" align="top" width="18" height="21"> **Bun** <sup>[[docs](https://bun.sh/guides/http/proxy)]</sup>
 
 ```ts
-import ArbInc from 'arb.inc';
+import ArbInc from '@arb-inc/node';
 
 const client = new ArbInc({
   fetchOptions: {
@@ -316,7 +316,7 @@ const client = new ArbInc({
 <img src="https://raw.githubusercontent.com/stainless-api/sdk-assets/refs/heads/main/deno.svg" align="top" width="18" height="21"> **Deno** <sup>[[docs](https://docs.deno.com/api/deno/~/Deno.createHttpClient)]</sup>
 
 ```ts
-import ArbInc from 'npm:arb.inc';
+import ArbInc from 'npm:@arb-inc/node';
 
 const httpClient = Deno.createHttpClient({ proxy: { url: 'http://localhost:8888' } });
 const client = new ArbInc({

@@ -1,10 +1,10 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIPromise } from 'arb.inc/core/api-promise';
+import { APIPromise } from '@arb-inc/node/core/api-promise';
 
 import util from 'node:util';
-import ArbInc from 'arb.inc';
-import { APIUserAbortError } from 'arb.inc';
+import ArbInc from '@arb-inc/node';
+import { APIUserAbortError } from '@arb-inc/node';
 const defaultFetch = fetch;
 
 describe('instantiate client', () => {

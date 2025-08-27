@@ -1,5 +1,5 @@
-import { multipartFormRequestOptions, createForm } from 'arb.inc/internal/uploads';
-import { toFile } from 'arb.inc/core/uploads';
+import { multipartFormRequestOptions, createForm } from '@arb-inc/node/internal/uploads';
+import { toFile } from '@arb-inc/node/core/uploads';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

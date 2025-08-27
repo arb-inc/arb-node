@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { ArbInc } from 'arb.inc';
+import { ArbInc } from '@arb-inc/node';
 
 const { stringifyQuery } = ArbInc.prototype as any;
 
