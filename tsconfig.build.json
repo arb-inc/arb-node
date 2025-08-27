@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "arb.inc/*": ["dist/src/*"],
-      "arb.inc": ["dist/src/index.ts"]
+      "@arb-inc/node/*": ["dist/src/*"],
+      "@arb-inc/node": ["dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,

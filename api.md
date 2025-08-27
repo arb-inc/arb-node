@@ -14,11 +14,11 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/filings/documents.ts">DocumentFileResponse</a></code>
+- <code><a href="./src/resources/filings/documents.ts">DocumentUploadResponse</a></code>
 
 Methods:
 
-- <code title="post /filings/documents/create">client.filings.documents.<a href="./src/resources/filings/documents.ts">file</a>({ ...params }) -> DocumentFileResponse</code>
+- <code title="post /filings/documents/create">client.filings.documents.<a href="./src/resources/filings/documents.ts">upload</a>({ ...params }) -> DocumentUploadResponse</code>
 
 # Schemas
 

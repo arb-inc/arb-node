@@ -9,8 +9,8 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "arb.inc/*": ["src/*"],
-      "arb.inc": ["src/index.ts"]
+      "@arb-inc/node/*": ["src/*"],
+      "@arb-inc/node": ["src/index.ts"]
     },
     "noEmit": true,
 

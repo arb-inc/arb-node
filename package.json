@@ -1,12 +1,12 @@
 {
-  "name": "arb.inc",
-  "version": "0.0.1",
+  "name": "@arb-inc/node",
+  "version": "0.1.0",
   "description": "The official TypeScript library for the Arb Inc API",
-  "author": "Arb Inc <support@arb.inc''>",
+  "author": "Arb Inc <support@arb.inc>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:stainless-sdks/arb.inc-typescript",
+  "repository": "github:arb-inc/arb-node",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [
