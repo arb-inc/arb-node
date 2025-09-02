@@ -9,8 +9,8 @@ const client = new ArbInc({
 
 describe('resource cases', () => {
   // Prism tests are disabled
-  test.skip('create: only required params', async () => {
-    const responsePromise = client.cases.create({ primaryUserID: 'c17c3433-81b3-4096-90e0-9fbb32c06204' });
+  test.skip('create', async () => {
+    const responsePromise = client.cases.create();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -18,10 +18,5 @@ describe('resource cases', () => {
     const dataAndResponse = await responsePromise.withResponse();
     expect(dataAndResponse.data).toBe(response);
     expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  // Prism tests are disabled
-  test.skip('create: required and optional params', async () => {
-    const response = await client.cases.create({ primaryUserID: 'c17c3433-81b3-4096-90e0-9fbb32c06204' });
   });
 });
