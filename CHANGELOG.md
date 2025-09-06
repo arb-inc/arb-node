@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.0 (2025-09-06)
+
+Full Changelog: [v0.1.1...v0.2.0](https://github.com/arb-inc/arb-node/compare/v0.1.1...v0.2.0)
+
+### Features
+
+* **api:** api update ([a994442](https://github.com/arb-inc/arb-node/commit/a994442d2537ef0d3f486632544d126e21825991))
+
+
+### Chores
+
+* **internal:** codegen related update ([bb26910](https://github.com/arb-inc/arb-node/commit/bb26910a1bb5ce000565890245e1ecd2aefdad61))
+
 ## 0.1.1 (2025-08-29)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/arb-inc/arb-node/compare/v0.1.0...v0.1.1)
