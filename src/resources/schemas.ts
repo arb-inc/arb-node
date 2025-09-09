@@ -6,109 +6,168 @@ import { RequestOptions } from '../internal/request-options';
 
 export class Schemas extends APIResource {
   /**
-   * Returns all schemas used on the platform, including documents, parties, and
-   * phases.
-   *
-   * @example
-   * ```ts
-   * const schemas = await client.schemas.list();
-   * ```
+   * Retrieves all available schemas for case phases and documents.
    */
-  list(
-    params: SchemaListParams | null | undefined = undefined,
-    options?: RequestOptions,
-  ): APIPromise<SchemaListResponse> {
-    const { body } = params ?? {};
-    return this._client.post('/schemas/list', { body: body, ...options });
+  list(options?: RequestOptions): APIPromise<SchemaListResponse> {
+    return this._client.post('/schemas/list', options);
   }
 }
 
 export interface SchemaListResponse {
   /**
-   * Document schema definitions used across the platform.
+   * All available document schemas.
    */
-  documents: Array<SchemaListResponse.Document>;
+  documents?: Array<SchemaListResponse.Document>;
 
   /**
-   * Party types that can be assigned to a case.
+   * All supported evidence types and their allowed MIME content types.
    */
-  parties: Array<SchemaListResponse.Party>;
+  evidence?: Array<SchemaListResponse.Evidence>;
 
   /**
-   * Standard case lifecycle phases.
+   * All available parties.
    */
-  phases: Array<SchemaListResponse.Phase>;
+  parties?: Array<SchemaListResponse.Party>;
+
+  /**
+   * All available case phases.
+   */
+  phases?: Array<SchemaListResponse.Phase>;
 }
 
 export namespace SchemaListResponse {
   export interface Document {
+    /**
+     * Unique document identifier.
+     */
     id?: string;
 
+    /**
+     * Brief explanation of the document.
+     */
     description?: string;
 
+    /**
+     * Human-readable document name.
+     */
     displayName?: string;
 
     /**
-     * Groups of fields inside a document.
+     * Sections belonging to this document.
      */
     sections?: Array<Document.Section>;
   }
 
   export namespace Document {
     export interface Section {
+      /**
+       * Brief explanation of the section.
+       */
       description?: string;
 
+      /**
+       * Human-readable section name.
+       */
       displayName?: string;
 
       /**
-       * Individual input fields inside a section.
+       * Fillable fields in the section.
        */
       fields?: Array<Section.Field>;
 
+      /**
+       * Numeric order of this section within its parent document.
+       */
       sortOrder?: number;
     }
 
     export namespace Section {
       export interface Field {
+        /**
+         * Unique field identifier.
+         */
         id?: string;
 
+        /**
+         * Human-readable field name.
+         */
         displayName?: string;
 
+        /**
+         * Maximum allowed content length.
+         */
         maxLength?: number;
 
+        /**
+         * Minimum required content length.
+         */
         minLength?: number;
 
+        /**
+         * Whether this field is mandatory.
+         */
         required?: boolean;
 
+        /**
+         * Numeric order of this field within its parent section.
+         */
         sortOrder?: number;
       }
     }
   }
 
-  export interface Party {
+  export interface Evidence {
+    /**
+     * Unique evidence type identifier.
+     */
     id?: string;
 
+    /**
+     * Allowed MIME content types for this evidence type.
+     */
+    contentTypes?: Array<string>;
+
+    /**
+     * Human-readable evidence type name.
+     */
+    displayName?: string;
+  }
+
+  export interface Party {
+    /**
+     * Unique party identifier.
+     */
+    id?: string;
+
+    /**
+     * Brief explanation of the party.
+     */
     description?: string;
 
+    /**
+     * Human-readable party name.
+     */
     displayName?: string;
   }
 
   export interface Phase {
+    /**
+     * Unique phase identifier.
+     */
     id?: string;
 
+    /**
+     * Brief explanation of the phase.
+     */
     description?: string;
 
+    /**
+     * Human-readable phase name.
+     */
     displayName?: string;
   }
 }
 
-export interface SchemaListParams {
-  /**
-   * Empty JSON body.
-   */
-  body?: unknown;
-}
-
 export declare namespace Schemas {
-  export { type SchemaListResponse as SchemaListResponse, type SchemaListParams as SchemaListParams };
+  export { type SchemaListResponse as SchemaListResponse };
 }
