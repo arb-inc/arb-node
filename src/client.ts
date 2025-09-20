@@ -16,9 +16,9 @@ import * as Errors from './core/error';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
-import { CaseCreateParams, CaseCreateResponse, Cases } from './resources/cases';
-import { SchemaListParams, SchemaListResponse, Schemas } from './resources/schemas';
-import { UserListResponse, Users } from './resources/users';
+import { CaseCreateResponse, Cases } from './resources/cases';
+import { SchemaListResponse, Schemas } from './resources/schemas';
+import { Users } from './resources/users';
 import { Filings } from './resources/filings/filings';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
@@ -731,19 +731,11 @@ ArbInc.Users = Users;
 export declare namespace ArbInc {
   export type RequestOptions = Opts.RequestOptions;
 
-  export {
-    Cases as Cases,
-    type CaseCreateResponse as CaseCreateResponse,
-    type CaseCreateParams as CaseCreateParams,
-  };
+  export { Cases as Cases, type CaseCreateResponse as CaseCreateResponse };
 
   export { Filings as Filings };
 
-  export {
-    Schemas as Schemas,
-    type SchemaListResponse as SchemaListResponse,
-    type SchemaListParams as SchemaListParams,
-  };
+  export { Schemas as Schemas, type SchemaListResponse as SchemaListResponse };
 
-  export { Users as Users, type UserListResponse as UserListResponse };
+  export { Users as Users };
 }

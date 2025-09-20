@@ -6,39 +6,25 @@ import { RequestOptions } from '../internal/request-options';
 
 export class Cases extends APIResource {
   /**
-   * Creates a new case, assigning ownership to the provided primary user.
-   *
-   * @example
-   * ```ts
-   * const _case = await client.cases.create({
-   *   primaryUserID: 'c17c3433-81b3-4096-90e0-9fbb32c06204',
-   * });
-   * ```
+   * Makes a case for the user.
    */
-  create(body: CaseCreateParams, options?: RequestOptions): APIPromise<CaseCreateResponse> {
-    return this._client.post('/cases/create', { body, ...options });
+  create(options?: RequestOptions): APIPromise<CaseCreateResponse> {
+    return this._client.post('/cases/create', options);
   }
 }
 
 export interface CaseCreateResponse {
   /**
-   * Unique identifier of the created case.
+   * Unique ID of the new case.
    */
   caseID?: string;
 
   /**
-   * Title of the created case.
+   * Short title for the case.
    */
   title?: string;
 }
 
-export interface CaseCreateParams {
-  /**
-   * UUID of the primary user to associate with this case.
-   */
-  primaryUserID: string;
-}
-
 export declare namespace Cases {
-  export { type CaseCreateResponse as CaseCreateResponse, type CaseCreateParams as CaseCreateParams };
+  export { type CaseCreateResponse as CaseCreateResponse };
 }

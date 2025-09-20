@@ -6,14 +6,13 @@ import { RequestOptions } from '../../internal/request-options';
 
 export class Documents extends APIResource {
   /**
-   * Files a document into a case for a user.
+   * Creates a new document for a case using a document template.
    *
    * @example
    * ```ts
    * const response = await client.filings.documents.upload({
    *   caseID: '2025-08-00125',
    *   documentID: 'statementOfClaim',
-   *   userID: '9e1c7c02-4b65-43b0-9ad7-2a62b542e2f1',
    * });
    * ```
    */
@@ -24,29 +23,24 @@ export class Documents extends APIResource {
 
 export interface DocumentUploadResponse {
   /**
-   * Identifier for the filed document.
+   * ID of the created filing.
    */
   filingID?: string;
 }
 
 export interface DocumentUploadParams {
   /**
-   * Identifier of the case the filing is for.
+   * ID of the case to file into.
    */
   caseID: string;
 
   /**
-   * Identifier of the document type being filed.
+   * Identifier of the document type/template.
    */
   documentID: string;
 
   /**
-   * UUID of the user filing the document.
-   */
-  userID: string;
-
-  /**
-   * Key-value pairs of field IDs and their input values.
+   * Key-value field inputs for the document.
    */
   fields?: { [key: string]: string };
 }
