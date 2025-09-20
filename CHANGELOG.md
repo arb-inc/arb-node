@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.2.0 (2025-09-20)
+
+Full Changelog: [v0.1.1...v0.2.0](https://github.com/arb-inc/arb-node/compare/v0.1.1...v0.2.0)
+
+### Features
+
+* **api:** api update ([a994442](https://github.com/arb-inc/arb-node/commit/a994442d2537ef0d3f486632544d126e21825991))
+
+
+### Bug Fixes
+
+* coerce nullable values to undefined ([d546ac3](https://github.com/arb-inc/arb-node/commit/d546ac3073b89cb9a1067efa34a3f501ffe342b7))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([39a7206](https://github.com/arb-inc/arb-node/commit/39a7206b4d867313b058d88b1422745551f4bb31))
+* **internal:** codegen related update ([bb26910](https://github.com/arb-inc/arb-node/commit/bb26910a1bb5ce000565890245e1ecd2aefdad61))
+
 ## 0.1.1 (2025-08-29)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/arb-inc/arb-node/compare/v0.1.0...v0.1.1)
