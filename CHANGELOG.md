@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.2.0 (2025-09-27)
+
+Full Changelog: [v0.1.1...v0.2.0](https://github.com/arb-inc/arb-node/compare/v0.1.1...v0.2.0)
+
+### Features
+
+* **api:** api update ([a994442](https://github.com/arb-inc/arb-node/commit/a994442d2537ef0d3f486632544d126e21825991))
+
+
+### Bug Fixes
+
+* coerce nullable values to undefined ([d546ac3](https://github.com/arb-inc/arb-node/commit/d546ac3073b89cb9a1067efa34a3f501ffe342b7))
+
+
+### Performance Improvements
+
+* faster formatting ([f378ce8](https://github.com/arb-inc/arb-node/commit/f378ce8c1ca082844d16016ba1a048a352aa4dfc))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([39a7206](https://github.com/arb-inc/arb-node/commit/39a7206b4d867313b058d88b1422745551f4bb31))
+* **internal:** codegen related update ([3203f41](https://github.com/arb-inc/arb-node/commit/3203f41ee8d340710482e2797b7e794bff2610ce))
+* **internal:** codegen related update ([bb26910](https://github.com/arb-inc/arb-node/commit/bb26910a1bb5ce000565890245e1ecd2aefdad61))
+* **internal:** fix incremental formatting in some cases ([d8f52a5](https://github.com/arb-inc/arb-node/commit/d8f52a5658cb04c196691affb20cc4a04714112e))
+* **internal:** ignore .eslintcache ([453810a](https://github.com/arb-inc/arb-node/commit/453810a63d796e7b5928f00d17b87e2c5c313760))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([805bada](https://github.com/arb-inc/arb-node/commit/805bada43d39106f1a836e3ba09b13d0cb0fccc3))
+
 ## 0.1.1 (2025-08-29)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/arb-inc/arb-node/compare/v0.1.0...v0.1.1)

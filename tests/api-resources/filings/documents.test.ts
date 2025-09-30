@@ -13,7 +13,6 @@ describe('resource documents', () => {
     const responsePromise = client.filings.documents.upload({
       caseID: '2025-08-00125',
       documentID: 'statementOfClaim',
-      userID: '9e1c7c02-4b65-43b0-9ad7-2a62b542e2f1',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -29,8 +28,7 @@ describe('resource documents', () => {
     const response = await client.filings.documents.upload({
       caseID: '2025-08-00125',
       documentID: 'statementOfClaim',
-      userID: '9e1c7c02-4b65-43b0-9ad7-2a62b542e2f1',
-      fields: { claimantName: 'Mike Smith', claimantAddress: '123 Main Street' },
+      fields: { respondentName: 'Mike Smith', respondentAddress: '123 Main Street' },
     });
   });
 });
