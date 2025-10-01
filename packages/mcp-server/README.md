@@ -10,7 +10,7 @@ You can run the MCP Server directly via `npx`:
 
 ```sh
 export ARB_INC_API_KEY="My API Key"
-npx -y @arb-inc/node-mcp@latest
+npx -y @arb-inc/mcp@latest
 ```
 
 ### Via MCP Client
@@ -25,7 +25,7 @@ For clients with a configuration JSON, it might look something like this:
   "mcpServers": {
     "arb_inc_node_api": {
       "command": "npx",
-      "args": ["-y", "@arb-inc/node-mcp", "--client=claude", "--tools=all"],
+      "args": ["-y", "@arb-inc/mcp", "--client=claude", "--tools=all"],
       "env": {
         "ARB_INC_API_KEY": "My API Key"
       }
@@ -169,10 +169,10 @@ http://localhost:3000?client=cursor&capability=tool-name-length%3D40
 
 ```js
 // Import the server, generated endpoints, or the init function
-import { server, endpoints, init } from "@arb-inc/node-mcp/server";
+import { server, endpoints, init } from "@arb-inc/mcp/server";
 
 // import a specific tool
-import createCases from "@arb-inc/node-mcp/tools/cases/create-cases";
+import createCases from "@arb-inc/mcp/tools/cases/create-cases";
 
 // initialize the server and all endpoints
 init({ server, endpoints });
