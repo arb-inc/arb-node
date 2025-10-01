@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { maybeFilter } from '@arb-inc/node-mcp/filtering';
-import { Metadata, asTextContentResult } from '@arb-inc/node-mcp/tools/types';
+import { maybeFilter } from '@arb-inc/mcp/filtering';
+import { Metadata, asTextContentResult } from '@arb-inc/mcp/tools/types';
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 import ArbInc from '@arb-inc/node';
