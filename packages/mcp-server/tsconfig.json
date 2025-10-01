@@ -8,8 +8,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "paths": {
-      "@arb-inc/node-mcp/*": ["./src/*"],
-      "@arb-inc/node-mcp": ["./src/index.ts"]
+      "@arb-inc/mcp/*": ["./src/*"],
+      "@arb-inc/mcp": ["./src/index.ts"]
     },
     "noEmit": true,
 
