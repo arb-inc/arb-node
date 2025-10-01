@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (2025-10-01)
+
+Full Changelog: [v0.2.1...v0.3.0](https://github.com/arb-inc/arb-node/compare/v0.2.1...v0.3.0)
+
+### Features
+
+* **api:** adding all endpoint to stainless sdk ([f98983f](https://github.com/arb-inc/arb-node/commit/f98983f9d3499dc59f117db49e969290237bdd29))
+
 ## 0.2.1 (2025-10-01)
 
 Full Changelog: [v0.2.0...v0.2.1](https://github.com/arb-inc/arb-node/compare/v0.2.0...v0.2.1)
