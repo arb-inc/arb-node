@@ -48,6 +48,55 @@ const _case: ArbInc.CaseCreateResponse = await client.cases.create();
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
 
+## File uploads
+
+Request parameters that correspond to file uploads can be passed in many different forms:
+
+- `File` (or an object with the same structure)
+- a `fetch` `Response` (or an object with the same structure)
+- an `fs.ReadStream`
+- the return value of our `toFile` helper
+
+```ts
+import fs from 'fs';
+import ArbInc, { toFile } from '@arb-inc/node';
+
+const client = new ArbInc();
+
+// If you have access to Node `fs` we recommend using `fs.createReadStream()`:
+await client.evidence.uploads.create({
+  caseID: '2025-08-00123',
+  description: 'Photo from the incident on May 5, 2025',
+  file: fs.createReadStream('/path/to/file'),
+});
+
+// Or if you have the web `File` API you can pass a `File` instance:
+await client.evidence.uploads.create({
+  caseID: '2025-08-00123',
+  description: 'Photo from the incident on May 5, 2025',
+  file: new File(['my bytes'], 'file'),
+});
+
+// You can also pass a `fetch` `Response`:
+await client.evidence.uploads.create({
+  caseID: '2025-08-00123',
+  description: 'Photo from the incident on May 5, 2025',
+  file: await fetch('https://somesite/file'),
+});
+
+// Finally, if none of the above are convenient, you can use our `toFile` helper:
+await client.evidence.uploads.create({
+  caseID: '2025-08-00123',
+  description: 'Photo from the incident on May 5, 2025',
+  file: await toFile(Buffer.from('my bytes'), 'file'),
+});
+await client.evidence.uploads.create({
+  caseID: '2025-08-00123',
+  description: 'Photo from the incident on May 5, 2025',
+  file: await toFile(new Uint8Array([0, 1, 2]), 'file'),
+});
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API,

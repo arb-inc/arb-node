@@ -16,10 +16,18 @@ import * as Errors from './core/error';
 import * as Uploads from './core/uploads';
 import * as API from './resources/index';
 import { APIPromise } from './core/api-promise';
-import { CaseCreateResponse, Cases } from './resources/cases';
+import {
+  CaseCreateResponse,
+  CaseListParams,
+  CaseListResponse,
+  CaseViewParams,
+  CaseViewResponse,
+  Cases,
+} from './resources/cases';
 import { SchemaListResponse, Schemas } from './resources/schemas';
-import { Users } from './resources/users';
+import { Evidence } from './resources/evidence/evidence';
 import { Filings } from './resources/filings/filings';
+import { ServiceOfNotice } from './resources/service-of-notice/service-of-notice';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
@@ -718,24 +726,35 @@ export class ArbInc {
   static toFile = Uploads.toFile;
 
   cases: API.Cases = new API.Cases(this);
+  evidence: API.Evidence = new API.Evidence(this);
   filings: API.Filings = new API.Filings(this);
+  serviceOfNotice: API.ServiceOfNotice = new API.ServiceOfNotice(this);
   schemas: API.Schemas = new API.Schemas(this);
-  users: API.Users = new API.Users(this);
 }
 
 ArbInc.Cases = Cases;
+ArbInc.Evidence = Evidence;
 ArbInc.Filings = Filings;
+ArbInc.ServiceOfNotice = ServiceOfNotice;
 ArbInc.Schemas = Schemas;
-ArbInc.Users = Users;
 
 export declare namespace ArbInc {
   export type RequestOptions = Opts.RequestOptions;
 
-  export { Cases as Cases, type CaseCreateResponse as CaseCreateResponse };
+  export {
+    Cases as Cases,
+    type CaseCreateResponse as CaseCreateResponse,
+    type CaseListResponse as CaseListResponse,
+    type CaseViewResponse as CaseViewResponse,
+    type CaseListParams as CaseListParams,
+    type CaseViewParams as CaseViewParams,
+  };
+
+  export { Evidence as Evidence };
 
   export { Filings as Filings };
 
-  export { Schemas as Schemas, type SchemaListResponse as SchemaListResponse };
+  export { ServiceOfNotice as ServiceOfNotice };
 
-  export { Users as Users };
+  export { Schemas as Schemas, type SchemaListResponse as SchemaListResponse };
 }
