@@ -207,10 +207,26 @@ The following tools are available in this MCP server.
 ### Resource `cases`:
 
 - `create_cases` (`write`): Makes a case for the user.
+- `list_cases` (`write`): Returns the user's active cases with simple pagination via a cursor.
+- `view_cases` (`write`): Returns a simple snapshot of a case the user can access.
+
+### Resource `evidence.uploads`:
+
+- `create_evidence_uploads` (`write`): Upload one file to a case with a short description.
+- `list_evidence_uploads` (`write`): Returns the uploads the user is allowed to access for a given case.
+- `delete_evidence_uploads` (`write`): Removes a specific upload from a case if you have access.
+- `download_evidence_uploads` (`write`): Returns a short-lived URL so you can download the upload.
 
 ### Resource `filings.documents`:
 
-- `upload_filings_documents` (`write`): Creates a new document for a case using a document template.
+- `create_filings_documents` (`write`): Creates a new document for a case using a document template.
+- `update_filings_documents` (`write`): Updates a document in a case with new field values.
+- `list_filings_documents` (`write`): Returns filed documents for a specific case that the signed-in user participates in.
+- `delete_filings_documents` (`write`): Removes a document from a case if it’s still eligible for deletion.
+- `pdf_filings_documents` (`write`): Returns a short-lived URL to download the PDF of a filed document in a case.
+- `submit_filings_documents` (`write`): Sends a filed document for approval in a case.
+- `view_filings_documents` (`write`): Returns the details of a filed document for a given case and filing.
+- `withdraw_filings_documents` (`write`): Removes a filed document from a case if it hasn’t been docketed.
 
 ### Resource `schemas`:
 
