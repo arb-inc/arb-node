@@ -5,7 +5,20 @@ import { Metadata, Endpoint, HandlerFunction } from './types';
 export { Metadata, Endpoint, HandlerFunction };
 
 import create_cases from './cases/create-cases';
-import upload_filings_documents from './filings/documents/upload-filings-documents';
+import list_cases from './cases/list-cases';
+import view_cases from './cases/view-cases';
+import create_evidence_uploads from './evidence/uploads/create-evidence-uploads';
+import list_evidence_uploads from './evidence/uploads/list-evidence-uploads';
+import delete_evidence_uploads from './evidence/uploads/delete-evidence-uploads';
+import download_evidence_uploads from './evidence/uploads/download-evidence-uploads';
+import create_filings_documents from './filings/documents/create-filings-documents';
+import update_filings_documents from './filings/documents/update-filings-documents';
+import list_filings_documents from './filings/documents/list-filings-documents';
+import delete_filings_documents from './filings/documents/delete-filings-documents';
+import pdf_filings_documents from './filings/documents/pdf-filings-documents';
+import submit_filings_documents from './filings/documents/submit-filings-documents';
+import view_filings_documents from './filings/documents/view-filings-documents';
+import withdraw_filings_documents from './filings/documents/withdraw-filings-documents';
 import list_schemas from './schemas/list-schemas';
 
 export const endpoints: Endpoint[] = [];
@@ -15,7 +28,20 @@ function addEndpoint(endpoint: Endpoint) {
 }
 
 addEndpoint(create_cases);
-addEndpoint(upload_filings_documents);
+addEndpoint(list_cases);
+addEndpoint(view_cases);
+addEndpoint(create_evidence_uploads);
+addEndpoint(list_evidence_uploads);
+addEndpoint(delete_evidence_uploads);
+addEndpoint(download_evidence_uploads);
+addEndpoint(create_filings_documents);
+addEndpoint(update_filings_documents);
+addEndpoint(list_filings_documents);
+addEndpoint(delete_filings_documents);
+addEndpoint(pdf_filings_documents);
+addEndpoint(submit_filings_documents);
+addEndpoint(view_filings_documents);
+addEndpoint(withdraw_filings_documents);
 addEndpoint(list_schemas);
 
 export type Filter = {

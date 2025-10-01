@@ -11,29 +11,29 @@ export const metadata: Metadata = {
   operation: 'write',
   tags: [],
   httpMethod: 'post',
-  httpPath: '/filings/documents/create',
-  operationId: 'postFilingsDocumentsCreate',
+  httpPath: '/filings/documents/update',
+  operationId: 'updateFiledDocument',
 };
 
 export const tool: Tool = {
-  name: 'upload_filings_documents',
+  name: 'update_filings_documents',
   description:
-    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nCreates a new document for a case using a document template.\n\n# Response Schema\n```json\n{\n  type: 'object',\n  properties: {\n    filingID: {\n      type: 'string',\n      description: 'ID of the created filing.'\n    }\n  }\n}\n```",
+    "When using this tool, always use the `jq_filter` parameter to reduce the response size and improve performance.\n\nOnly omit if you're sure you don't need the data.\n\nUpdates a document in a case with new field values.\n\n# Response Schema\n```json\n{\n  type: 'string'\n}\n```",
   inputSchema: {
     type: 'object',
     properties: {
       caseID: {
         type: 'string',
-        description: 'ID of the case to file into.',
-      },
-      documentID: {
-        type: 'string',
-        description: 'Identifier of the document type/template.',
+        description: 'The case ID the document belongs to.',
       },
       fields: {
         type: 'object',
-        description: 'Key-value field inputs for the document.',
+        description: 'Key-value fields to update on the document.',
         additionalProperties: true,
+      },
+      filingID: {
+        type: 'string',
+        description: 'The filing ID of the document to update.',
       },
       jq_filter: {
         type: 'string',
@@ -42,14 +42,14 @@ export const tool: Tool = {
           'A jq filter to apply to the response to include certain fields. Consult the output schema in the tool description to see the fields that are available.\n\nFor example: to include only the `name` field in every object of a results array, you can provide ".results[].name".\n\nFor more information, see the [jq documentation](https://jqlang.org/manual/).',
       },
     },
-    required: ['caseID', 'documentID'],
+    required: ['caseID', 'fields', 'filingID'],
   },
   annotations: {},
 };
 
 export const handler = async (client: ArbInc, args: Record<string, unknown> | undefined) => {
   const { jq_filter, ...body } = args as any;
-  return asTextContentResult(await maybeFilter(jq_filter, await client.filings.documents.upload(body)));
+  return asTextContentResult(await maybeFilter(jq_filter, await client.filings.documents.update(body)));
 };
 
 export default { metadata, tool, handler };
