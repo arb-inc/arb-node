@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 (2025-10-01)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/arb-inc/arb-node/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** updating MCP package name ([9d7e06f](https://github.com/arb-inc/arb-node/commit/9d7e06fe5f936f0486a7acd9188c4777226ba400))
+
 ## 0.3.0 (2025-10-01)
 
 Full Changelog: [v0.2.1...v0.3.0](https://github.com/arb-inc/arb-node/compare/v0.2.1...v0.3.0)
