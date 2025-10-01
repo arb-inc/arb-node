@@ -1,6 +1,6 @@
 {
   "name": "@arb-inc/node",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "The official TypeScript library for the Arb Inc API",
   "author": "Arb Inc <support@arb.inc>",
   "types": "dist/index.d.ts",

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.1 (2025-10-01)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/arb-inc/arb-node/compare/v0.2.0...v0.2.1)
+
+### Chores
+
+* configure new SDK language ([3ec64c6](https://github.com/arb-inc/arb-node/commit/3ec64c68cfda91da3518d1ced875793c74c31aba))
+* **internal:** remove .eslintcache ([08e0f50](https://github.com/arb-inc/arb-node/commit/08e0f50a052056371ae8d8ad1b4096b8839fa6d9))
+
 ## 0.2.0 (2025-09-27)
 
 Full Changelog: [v0.1.1...v0.2.0](https://github.com/arb-inc/arb-node/compare/v0.1.1...v0.2.0)
