@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2025-10-01)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/arb-inc/arb-node/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** generating cloudflare worker ([f2a6efa](https://github.com/arb-inc/arb-node/commit/f2a6efa4b24021defac60ba8f252276fd78beec2))
+
 ## 0.4.0 (2025-10-01)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/arb-inc/arb-node/compare/v0.3.0...v0.4.0)
