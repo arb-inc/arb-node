@@ -7,10 +7,14 @@
 	"name": "arb-inc-node-api-mcp-server",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-03-10",
-	"compatibility_flags": ["nodejs_compat"],
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
 	"migrations": [
 		{
-			"new_sqlite_classes": ["MyMCP"],
+			"new_sqlite_classes": [
+				"MyMCP"
+			],
 			"tag": "v1"
 		}
 	],
@@ -25,11 +29,14 @@
 	"kv_namespaces": [
 		{
 			"binding": "OAUTH_KV",
-			"id": "ae6fe7d7993146a9b8d54d87f73b0bdf"
+			"id": "df8fae4e7f83430bb406227d3dfca567"
 		}
 	],
 	"observability": {
 		"enabled": true
 	},
-	"assets": { "directory": "./static/", "binding": "ASSETS" }
+	"assets": {
+		"directory": "./static/",
+		"binding": "ASSETS"
+	}
 }

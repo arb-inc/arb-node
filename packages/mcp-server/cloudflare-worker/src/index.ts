@@ -12,17 +12,17 @@ type MCPProps = {
  * The information displayed on the OAuth consent screen
  */
 const serverConfig: ServerConfig = {
-  orgName: 'ArbInc',
-  instructionsUrl: undefined, // Set a url for where you show users how to get an API key
-  logoUrl: undefined, // Set a custom logo url to appear during the OAuth flow
+  orgName: 'Arb Inc',
+  instructionsUrl: 'https://docs.arb.inc/mcp/overview',
+  logoUrl: '/logo_light.svg',
   clientProperties: [
     {
       key: 'apiKey',
       label: 'API Key',
-      description: 'access token',
+      description: 'Your Arb Platform API key from app.arb.inc',
       required: true,
       default: undefined,
-      placeholder: 'My API Key',
+      placeholder: 'sk_...',
       type: 'password',
     },
   ],

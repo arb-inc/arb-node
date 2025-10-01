@@ -12,27 +12,38 @@ export const layout = (content: HtmlEscapedString | string, title: string, confi
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>${title} - ${config.orgName} MCP server</title>
+      <title>${title} - ${config.orgName}</title>
       <script src="https://cdn.tailwindcss.com"></script>
       <script>
         tailwind.config = {
           theme: {
             extend: {
               colors: {
-                primary: '#3498db',
-                secondary: '#2ecc71',
-                accent: '#f39c12',
+                border: 'hsl(var(--border))',
+                input: 'hsl(var(--input))',
+                ring: 'hsl(var(--ring))',
+                background: 'hsl(var(--background))',
+                foreground: 'hsl(var(--foreground))',
+                primary: {
+                  DEFAULT: 'hsl(var(--primary))',
+                  foreground: 'hsl(var(--primary-foreground))',
+                },
+                muted: {
+                  DEFAULT: 'hsl(var(--muted))',
+                  foreground: 'hsl(var(--muted-foreground))',
+                },
               },
-              fontFamily: {
-                sans: ['Inter', 'system-ui', 'sans-serif'],
-                heading: ['Roboto', 'system-ui', 'sans-serif'],
+              borderRadius: {
+                lg: 'var(--radius)',
+                md: 'calc(var(--radius) - 2px)',
+                sm: 'calc(var(--radius) - 4px)',
               },
             },
           },
         };
       </script>
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
         /* Custom styling for markdown content */
         .markdown h1 {
@@ -138,13 +149,35 @@ export const layout = (content: HtmlEscapedString | string, title: string, confi
           padding: 0;
         }
       </style>
+      <style>
+        :root {
+          --background: 0 0% 100%;
+          --foreground: 222 47% 11%;
+          --muted: 210 40% 96%;
+          --muted-foreground: 215 16% 47%;
+          --border: 214 32% 91%;
+          --input: 214 32% 91%;
+          --ring: 222 47% 11%;
+          --primary: 222 47% 11%;
+          --primary-foreground: 210 40% 98%;
+          --radius: 0.5rem;
+        }
+
+        * {
+          border-color: hsl(var(--border));
+        }
+
+        body {
+          background-color: hsl(var(--background));
+          color: hsl(var(--foreground));
+          font-family: 'Inter', system-ui, sans-serif;
+        }
+      </style>
     </head>
-    <body class="bg-gray-50 text-gray-800 font-sans leading-relaxed flex flex-col min-h-screen">
-      <main class="container mx-auto px-4 pb-12 flex-grow">${content}</main>
-      <footer class="bg-gray-100 py-6 mt-12">
-        <div class="container mx-auto px-4 text-center text-gray-600">
-          <p>&copy; ${new Date().getFullYear()} ${config.orgName}. All rights reserved.</p>
-        </div>
+    <body class="min-h-screen flex flex-col">
+      <main class="flex-1 flex items-center justify-center p-4">${content}</main>
+      <footer class="py-4 text-center text-sm text-muted-foreground">
+        <p>&copy; ${new Date().getFullYear()} ${config.orgName}. All rights reserved.</p>
       </footer>
     </body>
   </html>
@@ -227,53 +260,72 @@ export const renderLoggedOutAuthorizeScreen = async (
     }
     return html`
       <div>
-        <label for="${`clientopt_${field.key}`}" class="block text-sm font-medium text-gray-700 mb-1"
+        <label for="${`clientopt_${field.key}`}" class="block text-sm font-medium mb-2"
           >${field.label}</label
         >
+        ${field.description ? html`<p class="text-xs text-muted-foreground mb-2">${field.description}</p>` : ''}
         <input
           type="${field.type}"
           id="${`clientopt_${field.key}`}"
           name="${`clientopt_${field.key}`}"
           ${field.required ? 'required' : ''}
           ${field.placeholder ? html`placeholder="${field.placeholder}"` : ''}
-          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
     `;
   };
 
   return html`
-    <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
-      ${config.logoUrl ? html`<img src="${config.logoUrl}" class="w-24 mb-6 mx-auto" />` : ''}
+    <div class="w-full max-w-md">
+      <div class="bg-white rounded-lg border shadow-sm p-8">
+        ${config.logoUrl ? html`
+          <div class="flex justify-center mb-8">
+            <img src="${config.logoUrl}" alt="${config.orgName}" class="h-10" />
+          </div>
+        ` : ''}
 
-      <h1 class="text-2xl font-heading font-bold mb-6 text-gray-900">
-        Authorizing ${config.orgName} MCP server
-      </h1>
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-semibold tracking-tight">Connect to ${config.orgName}</h2>
+          <p class="text-sm text-muted-foreground mt-2">
+            Enter your API key to authorize your AI assistant
+          </p>
+        </div>
 
-      <div class="mb-8">
-        <h2 class="text-lg font-semibold mb-3 text-gray-800">
-          Enter your credentials to initialize the connection with your MCP client.
-        </h2>
-        If you're not sure how to configure your client, see the
-        ${config.instructionsUrl ?
-          html`<a
-            href="${config.instructionsUrl}"
-            class="text-primary hover:text-primary/80 transition-colors"
-            >instructions</a
-          >`
-        : 'instructions'}
-        to get started.
+        <form action="/approve" method="POST" class="space-y-6">
+          <input type="hidden" name="oauthReqInfo" value="${JSON.stringify(oauthReqInfo)}" />
+          <div class="space-y-4">${config.clientProperties.map(renderField)}</div>
+
+          <div class="space-y-3">
+            <button
+              type="submit"
+              name="action"
+              value="login_approve"
+              class="w-full inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+            >
+              Authorize
+            </button>
+            <button
+              type="submit"
+              name="action"
+              value="reject"
+              class="w-full inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-muted h-10 px-4 py-2"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+
+        ${config.instructionsUrl ? html`
+          <div class="mt-6 text-center text-sm text-muted-foreground">
+            Need help? <a href="${config.instructionsUrl}" class="text-primary underline hover:no-underline">View setup guide</a>
+          </div>
+        ` : ''}
       </div>
-      <form action="/approve" method="POST" class="space-y-4">
-        <input type="hidden" name="oauthReqInfo" value="${JSON.stringify(oauthReqInfo)}" />
-        <div class="space-y-4">${config.clientProperties.map(renderField)}</div>
+    </div>
 
-        <div class="mt-6 border-t pt-4">
-          <details class="w-full">
-            <summary class="font-medium text-primary cursor-pointer hover:text-primary/80 transition-colors">
-              Configuration Options
-            </summary>
-            <div class="mt-4 space-y-5 bg-gray-50 p-4 rounded-md">
+    <div class="hidden">
+      <form id="advanced-config" class="space-y-5 bg-gray-50 p-4 rounded-md">
               <div>
                 <label for="client" class="flex items-center text-sm font-medium text-gray-700 mb-1">
                   MCP Client
@@ -373,23 +425,6 @@ export const renderLoggedOutAuthorizeScreen = async (
             </div>
           </details>
         </div>
-
-        <button
-          type="submit"
-          name="action"
-          value="login_approve"
-          class="w-full py-3 px-4 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition-colors"
-        >
-          Log in and Approve
-        </button>
-        <button
-          type="submit"
-          name="action"
-          value="reject"
-          class="w-full py-3 px-4 border border-gray-300 text-gray-700 rounded-md font-medium hover:bg-gray-50 transition-colors"
-        >
-          Reject
-        </button>
       </form>
     </div>
   `;
@@ -397,32 +432,26 @@ export const renderLoggedOutAuthorizeScreen = async (
 
 export const renderApproveContent = async (message: string, status: string, redirectUrl: string) => {
   return html`
-    <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md text-center">
-      <div class="mb-4">
-        <span
-          class="inline-block p-3 ${status === 'success' ?
-            'bg-green-100 text-green-800'
-          : 'bg-red-100 text-red-800'} rounded-full"
-        >
-          ${status === 'success' ? '✓' : '✗'}
-        </span>
+    <div class="w-full max-w-md">
+      <div class="bg-white rounded-lg border shadow-sm p-8 text-center">
+        <div class="mb-6">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full ${status === 'success' ? 'bg-green-50' : 'bg-red-50'} mb-4">
+            <span class="text-3xl ${status === 'success' ? 'text-green-600' : 'text-red-600'}">
+              ${status === 'success' ? '✓' : '✗'}
+            </span>
+          </div>
+        </div>
+        <h2 class="text-2xl font-semibold tracking-tight mb-2">${message}</h2>
+        <p class="text-sm text-muted-foreground mb-8">Redirecting you back...</p>
       </div>
-      <h1 class="text-2xl font-heading font-bold mb-4 text-gray-900">${message}</h1>
-      <p class="mb-8 text-gray-600">You will be redirected back to the application shortly.</p>
-      <a
-        href="/"
-        class="inline-block py-2 px-4 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition-colors"
-      >
-        Return to Home
-      </a>
-      ${raw(`
-                <script>
-                    setTimeout(() => {
-                        window.location.href = "${redirectUrl}";
-                    }, 2000);
-                </script>
-            `)}
     </div>
+    ${raw(`
+      <script>
+        setTimeout(() => {
+          window.location.href = "${redirectUrl}";
+        }, 1500);
+      </script>
+    `)}
   `;
 };
 
