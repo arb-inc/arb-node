@@ -34,7 +34,7 @@ export const newMcpServer = () =>
   new McpServer(
     {
       name: 'arb_inc_node_api',
-      version: '0.5.1',
+      version: '0.5.2',
     },
     { capabilities: { tools: {}, logging: {} } },
   );

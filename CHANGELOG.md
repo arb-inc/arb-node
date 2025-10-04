@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.2 (2025-10-04)
+
+Full Changelog: [v0.5.1...v0.5.2](https://github.com/arb-inc/arb-node/compare/v0.5.1...v0.5.2)
+
+### Chores
+
+* **jsdoc:** fix [@link](https://github.com/link) annotations to refer only to parts of the package‘s public interface ([af18913](https://github.com/arb-inc/arb-node/commit/af189136fa6483da97259993e5a7ab1a07307e70))
+
 ## 0.5.1 (2025-10-01)
 
 Full Changelog: [v0.5.0...v0.5.1](https://github.com/arb-inc/arb-node/compare/v0.5.0...v0.5.1)
